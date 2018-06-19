@@ -7,4 +7,4 @@ Spring Boot整合Mybatis，Shiro，Redis，Slf4j，Druid基础架构
 >* Slf4j管理日志
 >* Druid数据源监控
 
-项目详细介绍正在编写中
+项目详细介绍正在加紧编写中
