@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssmshiro.persondetail.dao.PersonDetailDao">
+
+    <sql id="userColumns">
+        a.PERSON_ID AS "id",
+        a.PERSON_ACCOUNT AS "username",
+        a.PERSON_PASSWORD AS "password",
+        a.PERSON_YAN AS "salt",
+        a.PERSON_NAME AS "personName"
+    </sql>
+
+    <select id="get" resultType="com.ssmshiro.persondetail.entity.PersonDetail">
+        SELECT
+        <include refid="userColumns"/>
+        from person_detail a
+        WHERE a.PERSON_ACCOUNT = #{username}
+    </select>
+
+    <insert id="insert">
+        insert into person_detail (PERSON_ID, PERSON_ACCOUNT, PERSON_PASSWORD,
+        PERSON_YAN, PERSON_NAME
+        )
+        values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+        #{salt,jdbcType=VARCHAR}, #{personName,jdbcType=VARCHAR}
+        )
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+    </insert>
+
+    <delete id="deleteByPrimaryKey">
+        DELETE FROM person_detail
+        WHERE PERSON_ID = #{id}
+    </delete>
+    <update id="updateByPrimaryKey">
+        UPDATE person_detail
+        SET PERSON_ACCOUNT = #{username},
+        PERSON_PASSWORD = #{password},
+        PERSON_YAN = #{salt},
+        PERSON_NAME = #{personName},
+        PERSON_SEX = #{personSex},
+        PERSON_NATION = #{personNation},
+        PERSON_MARRY = #{personMarry},
+        PERSON_AGE = #{personAge},
+        PERSON_BIRTHDAY = #{personBirthday},
+        PERSON_PHONE = #{personPhone},
+        PERSON_OCCUTATION = #{personOccutation},
+        PERSON_ADDRESS = #{personAddress},
+        PERSON_PIC_PATH = #{personPicPath}
+        WHERE PERSON_ID = #{id}
+    </update>
+
+</mapper>

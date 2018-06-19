@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssmshiro.admindetail.dao.AdminDetailDao">
+
+    <sql id="adminColumns">
+        a.ADMIN_ID AS "id",
+        a.ADMIN_ACCOUNT AS "username",
+        a.ADMIN_PASSWORD AS "password",
+        a.ADMIN_YAN AS "salt",
+        a.ADMIN_NAME AS "adminName"
+    </sql>
+
+    <select id="get" resultType="com.ssmshiro.admindetail.entity.AdminDetail">
+        SELECT
+        <include refid="adminColumns"/>
+        from admin_detail a
+        WHERE a.ADMIN_ACCOUNT = #{username}
+    </select>
+
+    <insert id="insert">
+        insert into admin_detail (ADMIN_ID, ADMIN_ACCOUNT, ADMIN_PASSWORD,
+         ADMIN_YAN,ADMIN_NAME
+        )
+        values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+         #{salt,jdbcType=VARCHAR}, #{adminName,jdbcType=VARCHAR}
+        )
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+    </insert>
+
+</mapper>
