@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ExceptionController{
 
-
     @RequestMapping("/login")
     public @ResponseBody
     ResultEntity<String> error(){

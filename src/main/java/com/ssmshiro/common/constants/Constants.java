@@ -17,16 +17,4 @@ public class Constants {
 
     //用户类别为person
     public static final String USER_PERSON = "person";
-
-    //指定有偏好值时相近用户数量
-    public final static int EVALUATE_NEIGHBORHOOD_NUM = 10;
-
-    //指定有偏好值时推荐的药物数量
-    public final static int EVALUATE_RECOMMENDER_NUM = 6;
-
-    //指定无偏好值时相近用户数量
-    public final static int BOOLEAN_NEIGHBORHOOD_NUM = 20;
-
-    //指定无偏好值时推荐的药物数量
-    public final static int BOOLEAN_RECOMMENDER_NUM = 10;
 }
