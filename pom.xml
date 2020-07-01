@@ -19,7 +19,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
 
-        <mysql.driver.version>5.1.30</mysql.driver.version>
+        <mysql.driver.version>8.0.16</mysql.driver.version>
         <mybatis.springboot.version>1.3.0</mybatis.springboot.version>
         <druid.version>1.0.11</druid.version>
         <jedis.version>2.9.0</jedis.version>
